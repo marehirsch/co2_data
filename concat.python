@@ -1,0 +1,18 @@
+import os
+import glob
+import pandas as pd
+
+#which folder to you want to concat files in?
+group = input("folder name: ")
+# if you don't want your python script to be in the same folder as the data, uncomment this and set the directory
+os.chdir("/Users/mark/Desktop/data/"+group)
+
+#put all files with .csv in the list "files"
+extension = 'csv'
+files = [i for i in glob.glob('*.{}'.format(extension))]
+#print(all_filenames)
+
+#concatinate all files in 'files'
+combined_csv = pd.concat([pd.read_csv(f) for f in files ])
+#export as a mega-awesome csv
+combined_csv.to_csv( "combined_csv.csv", index=False, encoding='utf-8-sig')

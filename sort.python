@@ -1,0 +1,15 @@
+import os
+import shutil
+
+# setup the directory ur looking in or comment out if the script is in the folder with the data
+os.chdir("/Users/mark/Desktop/data")
+# lets you input what bot you are looking for ...for example, you could input NMWC
+group = input("bot name: ")
+# creates a folder for that bot
+os.mkdir(group)
+
+for file in os.listdir():
+
+   # look for files that start with the bot your looking for
+   if file.startswith(group):       
+       newPath = shutil.move(file, group)
